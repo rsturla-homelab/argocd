@@ -4,13 +4,12 @@ metadata:
   name: bootstrap
 spec:
   goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
   generators:
     - git:
-        repoURL: https://github.com/rsturla-homelab/argocd.git
+        repoURL: https://github.com/rsturla-homelab/argocd
         revision: main
         directories:
-          - path: ./bootstrap/*/*
+          - path: ./bootstrap/argocd/*
   template:
     metadata:
       name: '{{ path[3] }}-{{ path.basenameNormalized }}'
