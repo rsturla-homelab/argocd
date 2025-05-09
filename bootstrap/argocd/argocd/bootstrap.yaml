@@ -23,8 +23,8 @@ spec:
           prune: true
           selfHeal: true
       source:
-        repoURL: "{{.repoURL}}"
-        targetRevision: "{{.revision}}"
+        repoURL: https://github.com/rsturla-homelab/argocd.git
+        targetRevision: HEAD
         path: "{{.path.path}}"
       destination:
         server: https://kubernetes.default.svc
