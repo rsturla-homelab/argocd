@@ -5,10 +5,15 @@ metadata:
   namespace: argocd
 spec:
   goTemplate: true
+  generators:
+    - list:
+        elements:
+          - name: hello-world
+            namespace: hello-world
   template:
     metadata:
-      name: hello-world
-      namespace: test
+      name: '{{name}}'
+      namespace: '{{namespace}}'
     spec:
       project: default
       syncPolicy:
@@ -18,6 +23,6 @@ spec:
       source:
         repoURL: https://github.com/rsturla-homelab/argocd.git
         targetRevision: HEAD
-        path: ./bootstrap/hello-world
+        path: ./bootstrap/{{name}}
       destination:
         server: https://kubernetes.default.svc
