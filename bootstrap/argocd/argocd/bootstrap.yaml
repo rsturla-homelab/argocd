@@ -5,15 +5,17 @@ metadata:
   namespace: argocd
 spec:
   goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   generators:
-    - list:
-        elements:
-          - name: hello-world
-            namespace: hello-world
+    - git:
+        repoURL: https://github.com/rsturla-homelab/argocd.git
+        revision: HEAD
+        directories:
+          - path: apps/*
   template:
     metadata:
-      name: '{{.name}}'
-      namespace: '{{.namespace}}'
+      name: '{{.path.basename}}'
+      namespace: '{{.path.basename}}'
     spec:
       project: default
       syncPolicy:
@@ -21,8 +23,8 @@ spec:
           prune: true
           selfHeal: true
       source:
-        repoURL: https://github.com/rsturla-homelab/argocd.git
-        targetRevision: HEAD
-        path: ./apps/{{.name}}
+        repoURL: "{{.repoURL}}"
+        targetRevision: "{{.revision}}"
+        path: "{{.path.path}}"
       destination:
         server: https://kubernetes.default.svc
