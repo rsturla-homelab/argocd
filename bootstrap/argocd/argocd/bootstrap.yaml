@@ -12,8 +12,8 @@ spec:
             namespace: hello-world
   template:
     metadata:
-      name: '{{name}}'
-      namespace: '{{namespace}}'
+      name: '{{.name}}'
+      namespace: '{{.namespace}}'
     spec:
       project: default
       syncPolicy:
@@ -23,6 +23,6 @@ spec:
       source:
         repoURL: https://github.com/rsturla-homelab/argocd.git
         targetRevision: HEAD
-        path: ./bootstrap/{{name}}
+        path: ./apps/{{.name}}
       destination:
         server: https://kubernetes.default.svc
