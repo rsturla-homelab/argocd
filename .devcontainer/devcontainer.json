@@ -1,0 +1,30 @@
+{
+    "name": "proxmox-infrastructure",
+    "build": {
+        "dockerfile": "Containerfile",
+        "context": ".."
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "hashicorp.hcl",
+                "hashicorp.terraform",
+                "editorconfig.editorconfig"
+            ],
+            "settings": {
+                "editor.formatOnSave": true,
+                "[hcl]": {
+                    "editor.defaultFormatter": "hashicorp.hcl"
+                }
+            }
+        }
+    },
+    // Mount ~/.1password/agent.sock into the container
+    "mounts": [
+        "source=${localEnv:HOME}/.1password,target=/home/vscode/.1password,type=bind,consistency=cached"
+    ],
+    // Set SSH_AUTH_SOCK to 1Password's agent.sock
+    "remoteEnv": {
+        "SSH_AUTH_SOCK": "/home/vscode/.1password/agent.sock"
+    }
+}

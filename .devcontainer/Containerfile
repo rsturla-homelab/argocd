@@ -1,0 +1,34 @@
+FROM mcr.microsoft.com/devcontainers/base:ubuntu@sha256:94995b41dcfcfd9f12de62793546ace86417b846913ad0a23daa1abc51630890
+
+ARG DIRENV_VERSION=2.36.0
+ARG TERRAGRUNT_VERSION=0.78.0
+ARG OPENTOFU_VERSION=1.9.1
+ARG KUBECTL_VERSION=1.33.0
+ARG TALOSCTL_VERSION=1.10.0
+
+# Install direnv
+RUN curl -Lo /tmp/direnv https://github.com/direnv/direnv/releases/download/v${DIRENV_VERSION}/direnv.linux-amd64 && \
+    install -c -m 0755 /tmp/direnv /usr/local/bin/direnv && \
+    rm -f /tmp/direnv && \
+    echo 'eval "$(direnv hook bash)"' >> /etc/bash.bashrc
+
+# Install OpenTofu - https://github.com/opentofu/opentofu/releases/download/v1.9.0/tofu_1.9.0_linux_amd64.tar.gz
+RUN curl -Lo /tmp/opentofu.tar.gz https://github.com/opentofu/opentofu/releases/download/v${OPENTOFU_VERSION}/tofu_${OPENTOFU_VERSION}_linux_amd64.tar.gz \
+    && tar -xzf /tmp/opentofu.tar.gz -C /usr/local/bin \
+    && chmod +x /usr/local/bin/tofu \
+    && rm /tmp/opentofu.tar.gz \
+    && ln -s /usr/local/bin/tofu /usr/local/bin/terraform
+
+# Install Terragrunt - https://github.com/gruntwork-io/terragrunt/releases/download/v0.75.2/terragrunt_linux_amd64
+RUN curl -Lo /usr/local/bin/terragrunt https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 \
+    && chmod +x /usr/local/bin/terragrunt
+
+# Install Kubectl
+RUN curl -Lo /tmp/kubectl https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
+    install -c -m 0755 /tmp/kubectl /usr/local/bin/kubectl && \
+    rm -f /tmp/kubectl
+
+# Install Talosctl
+RUN curl -Lo /tmp/talosctl https://github.com/siderolabs/talos/releases/download/v${TALOSCTL_VERSION}/talosctl-linux-amd64 && \
+    install -c -m 0755 /tmp/talosctl /usr/local/bin/talosctl && \
+    rm -f /tmp/talosctl
