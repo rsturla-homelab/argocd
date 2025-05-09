@@ -5,28 +5,19 @@ metadata:
   namespace: argocd
 spec:
   goTemplate: true
-  # goTemplateOptions: ["missingkey=error"]
-  generators:
-    - git:
-        repoURL: https://github.com/rsturla-homelab/argocd.git
-        revision: HEAD
-        directories:
-          - path: ./bootstrap/test
   template:
     metadata:
-      name: argocd
+      name: hello-world
+      namespace: test
     spec:
       project: default
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
-        syncOptions:
-          - CreateNamespace=true
       source:
         repoURL: https://github.com/rsturla-homelab/argocd.git
         targetRevision: HEAD
-        path: ./bootstrap/test
+        path: ./bootstrap/hello-world
       destination:
-        namespace: 'test'
         server: https://kubernetes.default.svc
