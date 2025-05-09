@@ -2,31 +2,47 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: bootstrap
-  namespace: argocd
 spec:
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
   generators:
-    - git:
-        repoURL: https://github.com/rsturla-homelab/argocd.git
-        revision: HEAD
-        directories:
-          - path: ./bootstrap/argocd/*
+    - matrix:
+        generators:
+          - list:
+              elements:
+                - repoURL: https://github.com/rsturla-homelab/argocd.git
+                  revision: HEAD
+                  repoPath: bootstrap/*/*
+          - git:
+              repoURL: '{{ repoURL }}'
+              revision: '{{ revision }}'
+              directories:
+                - path: '{{ repoPath }}'
+  syncPolicy:
+    preserveResourcesOnDeletion: true
   template:
     metadata:
-      name: '{{.path.basename}}'
+      name: '{{ path.basenameNormalized }}'
+      namespace: argocd
     spec:
       project: default
+      source:
+        repoURL: '{{ repoURL }}'
+        targetRevision: '{{ revision }}'
+        path: '{{ path }}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{ path[3] }}'
       syncPolicy:
         automated:
-          prune: true
-          selfHeal: true
+          prune: false
         syncOptions:
           - CreateNamespace=true
-      source:
-        repoURL: https://github.com/rsturla-homelab/argocd.git
-        targetRevision: HEAD
-        path: '{{.path.path}}'
-      destination:
-        namespace: '{{.path.basename}}'
-        server: https://kubernetes.default.svc
+          - ServerSideApply=true
+          - ApplyOutOfSyncOnly=true
+          - RespectIgnoreDifferences=true
+          - SkipDryRunOnMissingResource=true
+        retry:
+          limit: -1 # Infinite retries
+          backoff:
+            duration: 30s
+            factor: 2
+            maxDuration: 5m
