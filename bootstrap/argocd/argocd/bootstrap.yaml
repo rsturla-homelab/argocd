@@ -2,18 +2,19 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: bootstrap
+  namespace: argocd
 spec:
   goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   generators:
     - git:
-        repoURL: https://github.com/rsturla-homelab/argocd
-        revision: main
+        repoURL: https://github.com/rsturla-homelab/argocd.git
+        revision: HEAD
         directories:
           - path: ./bootstrap/argocd/*
   template:
     metadata:
-      name: '{{ path[3] }}-{{ path.basenameNormalized }}'
-      namespace: argocd
+      name: '{{.path.basename}}'
     spec:
       project: default
       syncPolicy:
@@ -23,9 +24,9 @@ spec:
         syncOptions:
           - CreateNamespace=true
       source:
-        repoURL: '{{repoURL}}'
-        targetRevision: '{{revision}}'
-        path: '{{path}}'
+        repoURL: https://github.com/rsturla-homelab/argocd.git
+        targetRevision: HEAD
+        path: '{{.path.path}}'
       destination:
-        namespace: '{{path[3]}}'
+        namespace: '{{.path.basename}}'
         server: https://kubernetes.default.svc

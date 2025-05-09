@@ -20,8 +20,8 @@ RUN curl -Lo /tmp/opentofu.tar.gz https://github.com/opentofu/opentofu/releases/
     && ln -s /usr/local/bin/tofu /usr/local/bin/terraform
 
 # Install Terragrunt - https://github.com/gruntwork-io/terragrunt/releases/download/v0.75.2/terragrunt_linux_amd64
-RUN curl -Lo /usr/local/bin/terragrunt https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 \
-    && chmod +x /usr/local/bin/terragrunt
+RUN curl -Lo /usr/local/bin/terragrunt https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 && \
+    chmod +x /usr/local/bin/terragrunt
 
 # Install Kubectl
 RUN curl -Lo /tmp/kubectl https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
@@ -32,3 +32,7 @@ RUN curl -Lo /tmp/kubectl https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linu
 RUN curl -Lo /tmp/talosctl https://github.com/siderolabs/talos/releases/download/v${TALOSCTL_VERSION}/talosctl-linux-amd64 && \
     install -c -m 0755 /tmp/talosctl /usr/local/bin/talosctl && \
     rm -f /tmp/talosctl
+
+# Install ArgoCD CLI
+RUN curl -Lo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64 && \
+    chmod +x /usr/local/bin/argocd
