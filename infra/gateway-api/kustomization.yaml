@@ -3,3 +3,4 @@ kind: Kustomization
 
 resources:
   - github.com/kubernetes-sigs/gateway-api/config/crd?ref=v1.3.0
+  - shared-gateway.yaml
