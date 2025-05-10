@@ -11,6 +11,7 @@ spec:
         repoURL: https://github.com/rsturla-homelab/argocd.git
         revision: HEAD
         directories:
+          - path: bootstrap/*/*
           - path: apps/*
   template:
     metadata:
