@@ -11,5 +11,6 @@ spec:
   - "argocd.sturla.tech"
   rules:
   - backendRefs:
-    - name: argo-server
+    - name: argocd-server
       port: 443
+      namespace: argocd
