@@ -1,4 +1,17 @@
 ---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: sturla-tech-wildcard
+  namespace: gateway
+spec:
+  secretName: shared-gateway-wildcard-tls
+  issuerRef:
+    name: letsencrypt-staging-dns
+    kind: ClusterIssuer
+  dnsNames:
+    - '*.sturla.tech'
+---
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
@@ -20,3 +33,8 @@ spec:
         namespaces:
           from: All
       hostname: "*.sturla.tech"
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - kind: Secret
+            name: sturla-tech-wildcard-tls
