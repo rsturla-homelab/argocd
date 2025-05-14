@@ -1,4 +1,9 @@
+global:
+  domain: argocd.sturla.tech
+
 configs:
   cm:
     '"kustomize.buildOptions"': --enable-helm
     '"application.resourceTrackingMethod"': "annotation"
+  params:
+    server.insecure: true
