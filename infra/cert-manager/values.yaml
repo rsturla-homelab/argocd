@@ -5,6 +5,5 @@ config:
   apiVersion: controller.config.cert-manager.io/v1alpha1
   kind: ControllerConfiguration
   enableGatewayAPI: true
-  leaderElection:
-    leaderElect: true
-    resourceNamespace: cert-manager
+  leaderElectionConfig:
+    namespace: cert-manager
