@@ -12,5 +12,5 @@ spec:
   rules:
   - backendRefs:
     - name: argocd-server
-      port: 443
+      port: 8080
       namespace: argocd
