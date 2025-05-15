@@ -7,7 +7,7 @@ spec:
     email: &email robertsturla@outlook.com
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
-      name: letsencrypt-dns-private-key   # Stores the ACME account private key
+      name: letsencrypt-dns-private-key
     solvers:
       - dns01:
           cloudflare:

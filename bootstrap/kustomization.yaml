@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
 - ../infra/cert-manager
+- ../infra/gateway-api
 - ../infra/argocd
 - ./applicationset.yaml
 

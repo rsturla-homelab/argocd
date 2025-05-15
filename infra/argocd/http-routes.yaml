@@ -9,7 +9,7 @@ spec:
   - name: shared-gateway
     namespace: gateway
   hostnames:
-  - "argocd.sturla.tech"
+  - "argocd.lab.sturla.tech"
   rules:
     - matches:
         - path:

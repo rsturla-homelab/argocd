@@ -1,9 +1,10 @@
 global:
-  domain: argocd.sturla.tech
+  domain: argocd.lab.sturla.tech
 
 configs:
   cm:
     '"kustomize.buildOptions"': --enable-helm
     '"application.resourceTrackingMethod"': "annotation"
   params:
+    # Required for TLS termination on the Gateway
     server.insecure: true

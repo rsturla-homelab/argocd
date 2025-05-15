@@ -2,15 +2,15 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: sturla-tech-wildcard
+  name: lab-sturla-tech-wildcard
   namespace: gateway
 spec:
-  secretName: shared-gateway-wildcard-tls
+  secretName: lab-sturla-tech-wildcard-tls
   issuerRef:
     name: letsencrypt-dns
     kind: ClusterIssuer
   dnsNames:
-    - '*.sturla.tech'
+    - '*.lab.sturla.tech'
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
@@ -26,16 +26,16 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
-      hostname: "*.sturla.tech"
+      hostname: "*.lab.sturla.tech"
     - name: https
       protocol: HTTPS
       port: 443
       allowedRoutes:
         namespaces:
           from: All
-      hostname: "*.sturla.tech"
+      hostname: "*.lab.sturla.tech"
       tls:
         mode: Terminate
         certificateRefs:
           - kind: Secret
-            name: shared-gateway-wildcard-tls
+            name: lab-sturla-tech-wildcard-tls
