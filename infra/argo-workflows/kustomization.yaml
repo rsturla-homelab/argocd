@@ -9,3 +9,4 @@ helmCharts:
   version: 0.45.13
   repo: https://argoproj.github.io/argo-helm
   releaseName: argo-workflows
+  valuesFile: values.yaml
