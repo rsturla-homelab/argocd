@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+
+namespace: argo-rollouts
+resources:
+- namespace.yaml
+# - http-routes.yaml
+
+helmCharts:
+- name: argo-rollouts
+  version: 8.0.2
+  repo: https://argoproj.github.io/argo-helm
+  releaseName: argo-rollouts
+  valuesFile: values.yaml
