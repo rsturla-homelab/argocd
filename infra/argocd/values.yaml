@@ -8,3 +8,7 @@ configs:
   params:
     # Required for TLS termination on the Gateway
     server.insecure: true
+  data:
+    resource.customizations.ignoreResourceUpdates.all: |
+      jsonPointers:
+        - /spec/preserveUnknownFields
