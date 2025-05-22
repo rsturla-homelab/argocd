@@ -10,3 +10,11 @@ helmCharts:
   repo: https://cloudnative-pg.github.io/charts
   releaseName: cnpg
   valuesFile: values.yaml
+
+patches:
+  - target:
+      kind: CustomResourceDefinition
+    patch: |-
+      - op: add
+        path: /metadata/annotations/argocd.argoproj.io~1sync-options
+        value: ServerSideApply=true
