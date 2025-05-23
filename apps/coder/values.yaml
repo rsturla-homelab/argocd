@@ -30,3 +30,6 @@ coder:
   #tls:
   #  secretNames:
   #    - my-tls-secret-name
+
+  service:
+    type: ClusterIP
