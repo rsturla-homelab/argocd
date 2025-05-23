@@ -8,5 +8,5 @@ helmCharts:
 - name: external-secrets
   version: 0.17.0
   repo: https://charts.external-secrets.io
-  releaseName: external-secrets
+  releaseName: external-secrets-operator
   valuesFile: values.yaml
