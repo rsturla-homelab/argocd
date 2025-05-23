@@ -15,7 +15,7 @@ coder:
           # You'll need to create a secret called coder-db-url with your
           # Postgres connection URL like:
           # postgres://coder:password@postgres:5432/coder?sslmode=disable
-          name: coder-app
+          name: coder-db-app
           key: jdbc-uri
     # For production deployments, we recommend configuring your own GitHub
     # OAuth2 provider and disabling the default one.
