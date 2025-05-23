@@ -4,6 +4,7 @@ namespace: coder
 resources:
 - namespace.yaml
 - postgres.yaml
+- http-routes.yaml
 
 helmCharts:
 - name: coder
