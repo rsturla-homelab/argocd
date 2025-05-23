@@ -27,6 +27,9 @@ coder:
     - name: CODER_ACCESS_URL
       value: "https://coder.lab.sturla.tech"
 
+    - name: CODER_TEMPLATE_AUTOIMPORT
+      values: "kubernetes"
+
   #tls:
   #  secretNames:
   #    - my-tls-secret-name
