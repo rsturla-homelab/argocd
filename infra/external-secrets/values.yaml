@@ -1,7 +1,2 @@
 webhook:
   create: false
-certController:
-  create: false
-crd:
-  conversion:
-    enabled: false
