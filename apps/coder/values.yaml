@@ -16,7 +16,7 @@ coder:
           # Postgres connection URL like:
           # postgres://coder:password@postgres:5432/coder?sslmode=disable
           name: coder-db-app
-          key: jdbc-uri
+          key: uri
     # For production deployments, we recommend configuring your own GitHub
     # OAuth2 provider and disabling the default one.
     - name: CODER_OAUTH2_GITHUB_DEFAULT_PROVIDER_ENABLE
