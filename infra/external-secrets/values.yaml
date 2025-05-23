@@ -1,2 +1,5 @@
 webhook:
   create: false
+crd:
+  conversion:
+    enabled: false
