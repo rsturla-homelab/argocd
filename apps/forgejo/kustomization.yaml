@@ -12,3 +12,4 @@ helmCharts:
     repo: oci://code.forgejo.org/forgejo-helm
     releaseName: forgejo
     valuesFile: values.yaml
+    namespace: forgejo
