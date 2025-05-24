@@ -36,8 +36,10 @@ postgresql-ha:
   enabled: false
 redis-cluster:
   enabled: false
+
 redis:
   enabled: true
+  host: forgejo-redis-headless.forgejo.svc.cluster.local
 
 replicaCount: 1
 namespaceOverride: forgejo
