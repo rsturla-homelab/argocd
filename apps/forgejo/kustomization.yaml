@@ -8,5 +8,6 @@ resources:
 helmCharts:
   - name: forgejo
     version: 12.5.1
-    repo: oci://code.forgejo.org/forgejo-helm/forgejo
+    repo: oci://code.forgejo.org/forgejo-helm
+    releaseName: forgejo
     valuesFile: values.yaml
