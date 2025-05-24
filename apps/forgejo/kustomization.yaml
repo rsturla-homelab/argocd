@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+
+namespace: forgejo
+resources:
+  - namespace.yaml
+  - http-routes.yaml
+
+helmCharts:
+  - name: forgejo
+    version: 12.5.1
+    repo: oci://code.forgejo.org/forgejo-helm/forgejo
+    valuesFile: values.yaml

@@ -1,0 +1,7 @@
+gitea:
+  config:
+    APP_NAME: "Forgejo: Git with a cup of tea"
+    repository:
+      ROOT: "~/gitea-repositories"
+    repository.pull-request:
+      WORK_IN_PROGRESS_PREFIXES: "WIP:,[WIP]:"
