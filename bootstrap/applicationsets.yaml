@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: infra-applications
+  name: applicationsets
   namespace: argocd
 spec:
   goTemplate: true
@@ -11,8 +11,7 @@ spec:
         repoURL: https://github.com/rsturla-homelab/argocd.git
         revision: HEAD
         directories:
-          - path: infra/platform/*
-          - path: infra/delivery/*
+          - path: bootstrap/applicationsets
   template:
     metadata:
       name: '{{.path.basename}}'
