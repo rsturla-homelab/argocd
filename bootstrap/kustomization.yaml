@@ -5,6 +5,7 @@ resources:
 - ../infra/platform/cert-manager
 - ../infra/platform/gateway-api
 - ../infra/platform/argocd
+- ./applicationsets/bootstrap.yaml
 - ./applicationsets/infra.yaml
 - ./applicationsets/apps.yaml
 
