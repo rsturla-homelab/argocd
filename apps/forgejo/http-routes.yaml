@@ -16,5 +16,5 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: forgejo
+        - name: forgejo-http
           port: 80
