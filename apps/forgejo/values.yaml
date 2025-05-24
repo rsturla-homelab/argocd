@@ -1,13 +1,19 @@
 gitea:
   config:
-    APP_NAME: "Forgejo: Git with a cup of tea"
+    server:
+      ROOT_URL: "https://git.lab.sturla.tech"
+      DOMAIN: "git.lab.sturla.tech"
+      HTTP_PORT: 3000
+      SSH_PORT: 22
+      OFFLINE_MODE: true
     repository:
-      ROOT: "~/gitea-repositories"
+      ROOT: /data/git/repositories
     repository.pull-request:
       WORK_IN_PROGRESS_PREFIXES: "WIP:,[WIP]:"
+    lfs:
+      PATH: /data/git/lfs
     database:
       DB_TYPE: postgres
-
   additionalConfigFromEnvs:
     - name: FORGEJO__DATABASE__HOST
       valueFrom:
