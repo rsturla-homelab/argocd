@@ -1,32 +1,28 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: bootstrap
-  namespace: argocd
+  name: infra-applications
 spec:
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
   generators:
     - git:
         repoURL: https://github.com/rsturla-homelab/argocd.git
         revision: HEAD
         directories:
-          - path: bootstrap/*
-          - path: infra/*
-          - path: apps/*
+          - path: infra/delivery/*
+          - path: infra/platform/*
   template:
     metadata:
-      name: '{{.path.basename}}'
-      namespace: '{{.path.basename}}'
+      name: '{{path.basename}}'
     spec:
       project: default
+      source:
+        repoURL: https://github.com/rsturla-homelab/argocd.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
-      source:
-        repoURL: https://github.com/rsturla-homelab/argocd.git
-        targetRevision: HEAD
-        path: "{{.path.path}}"
-      destination:
-        server: https://kubernetes.default.svc

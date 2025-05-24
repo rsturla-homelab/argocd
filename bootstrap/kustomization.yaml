@@ -2,10 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- ../infra/cert-manager
-- ../infra/gateway-api
-- ../infra/argocd
-- ./applicationset.yaml
+- ../infra/platform/cert-manager
+- ../infra/platform/gateway-api
+- ../infra/platform/argocd
+- ./applicationsets/infra.yaml
+- ./applicationsets/apps.yaml
 
 sortOptions:
   order: fifo
