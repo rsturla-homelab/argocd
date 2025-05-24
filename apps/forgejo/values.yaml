@@ -38,10 +38,9 @@ redis-cluster:
   enabled: false
 
 redis-cluster:
+  enabled: false
+redis:
   enabled: true
-  cluster:
-    nodes: 1
-    replicas: 0
 
 replicaCount: 1
 namespaceOverride: forgejo
