@@ -8,7 +8,7 @@ spec:
         repoURL: https://github.com/rsturla-homelab/argocd.git
         revision: HEAD
         directories:
-          - path: apps/*/*
+          - path: apps/devtools/*
   template:
     metadata:
       name: '{{path.basename}}'
