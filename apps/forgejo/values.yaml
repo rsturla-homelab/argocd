@@ -7,10 +7,27 @@ gitea:
       WORK_IN_PROGRESS_PREFIXES: "WIP:,[WIP]:"
     database:
       DB_TYPE: postgres
-      HOST: forgejo-db-rw
-      NAME: forgejo
-      USER:
-      PASSWD:
+  additionalConfigFromEnvs:
+    - name: FORGEJO__DATABASE__HOST
+      valueFrom:
+        secretKeyRef:
+          name: forgejo-db-app
+          key: host
+    - name: FORGEJO__DATABASE__NAME
+      valueFrom:
+        secretKeyRef:
+          name: forgejo-db-app
+          key: dbname
+    - name: FORGEJO__DATABASE__USER
+      valueFrom:
+        secretKeyRef:
+          name: forgejo-db-app
+          key: username
+    - name: FORGEJO__DATABASE__PASSWD
+      valueFrom:
+        secretKeyRef:
+          name: forgejo-db-app
+          key: password
 
 postgresql:
   enabled: false
