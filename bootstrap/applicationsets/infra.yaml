@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: bootstrap
+  name: infra-applications
   namespace: argocd
 spec:
   goTemplate: true
@@ -12,6 +12,7 @@ spec:
         revision: HEAD
         directories:
           - path: infra/platform/*
+          - path: infra/delivery/*
   template:
     metadata:
       name: '{{.path.basename}}'
