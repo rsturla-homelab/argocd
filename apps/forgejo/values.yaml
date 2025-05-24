@@ -40,3 +40,4 @@ redis:
   enabled: true
 
 replicaCount: 1
+namespaceOverride: forgejo
