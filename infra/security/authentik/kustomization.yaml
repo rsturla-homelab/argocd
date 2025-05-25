@@ -4,6 +4,7 @@ namespace: authentik
 resources:
 - namespace.yaml
 - postgres.yaml
+- secret.yaml
 - http-routes.yaml
 
 helmCharts:
