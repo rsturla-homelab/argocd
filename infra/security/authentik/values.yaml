@@ -1,6 +1,6 @@
 authentik:
   email:
-  secret_key: "PleaseGenerateA50CharKey"
+  secret_key: file:///authentik-secret/secret-key
   postgresql:
     host: file:///postgres-creds/host
     name: file:///postgres-creds/dbname
@@ -15,9 +15,15 @@ server:
     - name: postgres-creds
       secret:
         secretName: authentik-db-app
+    - name: authentik-secret
+      secret:
+        secretName: authentik-secret-key
   volumeMounts:
     - name: postgres-creds
       mountPath: /postgres-creds
+      readOnly: true
+    - name: authentik-secret
+      mountPath: /authentik-secret
       readOnly: true
 
 worker:
