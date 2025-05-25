@@ -31,9 +31,15 @@ worker:
     - name: postgres-creds
       secret:
         secretName: authentik-db-app
+    - name: authentik-secret
+      secret:
+        secretName: authentik-secret-key
   volumeMounts:
     - name: postgres-creds
       mountPath: /postgres-creds
+      readOnly: true
+    - name: authentik-secret
+      mountPath: /authentik-secret
       readOnly: true
 
 postgresql:
