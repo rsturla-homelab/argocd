@@ -1,6 +1,6 @@
 authentik:
   email:
-  secret_key: file:///authentik-secret/secret-key
+  secret_key: file:///authentik-secret/password
   postgresql:
     host: file:///postgres-creds/host
     name: file:///postgres-creds/dbname
