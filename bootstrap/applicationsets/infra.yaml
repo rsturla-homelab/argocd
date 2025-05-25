@@ -13,6 +13,7 @@ spec:
         directories:
           - path: infra/platform/*
           - path: infra/delivery/*
+          - path: infra/security/*
   template:
     metadata:
       name: '{{.path.basename}}'
