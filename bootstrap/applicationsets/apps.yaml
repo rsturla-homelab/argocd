@@ -12,6 +12,7 @@ spec:
         revision: HEAD
         directories:
           - path: apps/devtools/*
+          - path: apps/office/*
   template:
     metadata:
       name: '{{.path.basename}}'
