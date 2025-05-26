@@ -1,0 +1,20 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: nextcloud-https
+  namespace: nextcloud
+spec:
+  parentRefs:
+  - name: shared-gateway
+    namespace: gateway
+  hostnames:
+  - "nextcloud.lab.sturla.tech"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: nextcloud
+          port: 8080
