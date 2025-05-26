@@ -1,2 +1,15 @@
 nextcloud:
   host: nextcloud.lab.sturla.tech
+
+internalDatabase:
+  enabled: false
+
+externalDatabase:
+  enabled: true
+  type: postgresql
+  existingSecret:
+    secretName: nextcloud-db-app
+    hostKey: host
+    databaseKey: dbname
+    usernameKey: username
+    passwordKey: password
