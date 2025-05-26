@@ -1,2 +1,2 @@
-# internalDatabase:
-#   enabled: false
+nextcloud:
+  host: nextcloud.lab.sturla.tech
