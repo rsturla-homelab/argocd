@@ -1,36 +1,36 @@
 cluster:
   name: my-cluster
 
-clusterMetrics:
-  enabled: true
-clusterEvents:
-  enabled: true
+# clusterMetrics:
+#   enabled: true
+# clusterEvents:
+#   enabled: true
 podLogs:
   enabled: true
 
-alloy-metrics:
-  enabled: true
-alloy-singleton:
-  enabled: true
+# alloy-metrics:
+#   enabled: true
+# alloy-singleton:
+#   enabled: true
 alloy-logs:
   enabled: true
 
 destinations:
-  - name: hostedMetrics
-    type: prometheus
-    url: https://prometheus.example.com/api/prom/push
-    auth:
-      type: basic
-      username: "my-username"
-      password: "my-password"
-  - name: localPrometheus
-    type: prometheus
-    url: http://prometheus.monitoring.svc.cluster.local:9090
+  # - name: hostedMetrics
+  #   type: prometheus
+  #   url: https://prometheus.example.com/api/prom/push
+  #   auth:
+  #     type: basic
+  #     username: "my-username"
+  #     password: "my-password"
+  # - name: localPrometheus
+  #   type: prometheus
+  #   url: http://prometheus.monitoring.svc.cluster.local:9090
   - name: hostedLogs
     type: loki
-    url: https://loki.example.com/loki/api/v1/push
-    auth:
-      type: basic
-      username: "my-username"
-      password: "my-password"
-      tenantIdFrom: env("LOKI_TENANT_ID")
+    url: http://loki-gateway.monitoring.svc.cluster.local:3100/loki/api/v1/push
+    # auth:
+    #   type: basic
+    #   username: "my-username"
+    #   password: "my-password"
+    #   tenantIdFrom: env("LOKI_TENANT_ID")

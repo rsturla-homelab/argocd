@@ -4,4 +4,4 @@ namespace: monitoring
 resources:
 - namespace.yaml
 - ./loki/
-# - ./k8s-monitoring/
+- ./k8s-monitoring/
