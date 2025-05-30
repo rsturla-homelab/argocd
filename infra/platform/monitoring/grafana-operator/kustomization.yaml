@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+
+helmCharts:
+- name: grafana-operator
+  version: 5.18.0
+  repo: https://grafana.github.io/helm-charts
+  releaseName: grafana-operator
+  valuesFile: values.yaml
+  namespace: monitoring
