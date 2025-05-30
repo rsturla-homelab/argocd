@@ -1,5 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 
+resources:
+- ./crds/collectors.grafana.com_alloy.yaml
+
 helmCharts:
 - name: alloy-operator
   version: v0.2.9
