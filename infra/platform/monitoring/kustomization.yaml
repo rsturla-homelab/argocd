@@ -4,5 +4,6 @@ namespace: monitoring
 resources:
 - namespace.yaml
 - ./alloy-crds/
+- ./grafana-operator/
 - ./loki/
 - ./k8s-monitoring/
