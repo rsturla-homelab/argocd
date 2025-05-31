@@ -11,3 +11,23 @@ spec:
     security:
       admin_user: root
       admin_password: secret
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: grafana-https
+  namespace: monitoring
+spec:
+  parentRefs:
+  - name: shared-gateway
+    namespace: gateway
+  hostnames:
+  - "grafana.lab.sturla.tech"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: grafana-service
+          port: 443
