@@ -30,4 +30,4 @@ spec:
             value: /
       backendRefs:
         - name: grafana-service
-          port: 443
+          port: 3000
