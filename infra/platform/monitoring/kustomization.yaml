@@ -5,5 +5,5 @@ resources:
 - namespace.yaml
 - ./alloy-crds/
 - ./loki/
-# - ./k8s-monitoring/
+- ./k8s-monitoring/
 - ./grafana.yaml
