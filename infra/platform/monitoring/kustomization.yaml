@@ -6,4 +6,4 @@ resources:
 - ./alloy-crds/
 - ./grafana-operator/
 - ./loki/
-- ./k8s-monitoring/
+# - ./k8s-monitoring/
