@@ -6,4 +6,3 @@ helmCharts:
   repo: https://grafana.github.io/helm-charts
   releaseName: k8s-monitoring
   valuesFile: values.yaml
-  namespace: monitoring
