@@ -6,7 +6,7 @@ resources:
 
 helmCharts:
 - name: vcluster
-  version: 0.25.0
+  version: 0.25.1
   repo: https://charts.loft.sh
   releaseName: vcluster
   valuesFile: values.yaml
