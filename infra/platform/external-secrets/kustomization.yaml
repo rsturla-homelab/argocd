@@ -6,7 +6,7 @@ resources:
 
 helmCharts:
 - name: external-secrets
-  version: 0.18.0
+  version: 0.19.2
   repo: https://charts.external-secrets.io
   releaseName: external-secrets-operator
   valuesFile: values.yaml
