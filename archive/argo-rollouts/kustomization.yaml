@@ -6,6 +6,6 @@ resources:
 
 helmCharts:
 - name: argo-rollouts
-  version: 2.39.6
+  version: 2.40.3
   repo: https://argoproj.github.io/argo-helm
   releaseName: argo-rollouts
