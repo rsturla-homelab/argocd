@@ -8,7 +8,7 @@ resources:
 
 helmCharts:
 - name: grafana-operator
-  version: 5.18.0
+  version: v5.19.4
   repo: https://grafana.github.io/helm-charts
   releaseName: grafana-operator
   valuesFile: values.yaml
