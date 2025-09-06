@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 
 helmCharts:
 - name: loki
-  version: 6.30.1
+  version: 6.39.0
   repo: https://grafana.github.io/helm-charts
   releaseName: loki
   valuesFile: values.yaml
