@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/base:ubuntu@sha256:94995b41dcfcfd9f12de62793546ace86417b846913ad0a23daa1abc51630890
+FROM mcr.microsoft.com/devcontainers/base:ubuntu@sha256:3dcb059253b2ebb44de3936620e1cff3dadcd2c1c982d579081ca8128c1eb319
 
 ARG DIRENV_VERSION=2.36.0
 ARG TERRAGRUNT_VERSION=0.78.0
