@@ -1,0 +1,39 @@
+{
+    $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+    extends: [
+        'config:best-practices',
+    ],
+    packageRules: [
+        {
+            matchDatasources: [
+                'docker',
+            ],
+            matchUpdateTypes: [
+                'major',
+            ],
+            enabled: false,
+        },
+    ],
+    customManagers: [
+        {
+            customType: 'regex',
+            managerFilePatterns: [
+                '/^image-versions\\.yaml$/',
+            ],
+            matchStrings: [
+                'image:\\s*(?<packageName>\\S+)\\s*tag:\\s*(?<currentValue>\\S+)\\s*digest:\\s*(?<currentDigest>sha256:[a-f0-9]+)',
+            ],
+            datasourceTemplate: 'docker',
+        },
+        {
+            customType: 'regex',
+            managerFilePatterns: [
+                '/^Casks/.*\\.rb$/',
+            ],
+            matchStrings: [
+                '# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+)( versioning=(?<versioning>[^\\s]+))?( extractVersion=(?<extractVersion>[^\\s]+))?\n[\\s\\S]*?version\\s+"(?<currentValue>[^"]+)"(?:[\\s\\S]*?sha256\\s+"?(?<currentDigest>[a-f0-9]+|:no_check)"?)?',
+            ],
+            versioningTemplate: 'semver',
+        },
+    ],
+}
